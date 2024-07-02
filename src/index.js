@@ -1,13 +1,17 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import App from './App'
-import theme from './theme'
-import { ThemeProvider } from '@mui/material'
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './App';
+import defaultTheme from './theme/default'; // Adjust the path to your theme file
+import { ThemeProvider, CssBaseline } from '@mui/material'; // Import ThemeProvider and CssBaseline from MUI
 
-const rootEl = document.getElementById('root')
+const rootElement = document.getElementById('root');
+
 ReactDOM.render(
-  <ThemeProvider theme={theme}>
-    <App />
-  </ThemeProvider>,
-  rootEl
-)
+  <React.StrictMode>
+    <ThemeProvider theme={defaultTheme}>
+      <CssBaseline />
+      <App />
+    </ThemeProvider>
+  </React.StrictMode>,
+  rootElement
+);

@@ -1,54 +1,17 @@
-import { useState } from 'react'
-//import Box from '@mui/material/Box';
-import DropDown from './components/dropDown'
-import {classes, maps} from './constants'
-import urlFactory from './helpers/urlFactory'
+// src/App.js
+import React from 'react';
+import { ThemeProvider, CssBaseline } from '@mui/material';
+import HomePage from './pages/HomePage/HomePage'; // Adjust the path as per your directory structure
+import defaultTheme from './theme/default';
 
 function App() {
-  const [state, setState] = useState({
-    class: '',
-    area: '',
-    map: ''
-  })
-
-  const handleChange = (key, value) => {
-    setState((prevState) => ({
-      ...prevState,
-      [key]: value,
-    }))
-  }
-
   return (
-    <div>
-      <DropDown
-        label="class"
-        value={state.class}
-        onChange={(value) => handleChange('class', value)}
-        options={Object.keys(classes)}
-      />
-      <DropDown
-        label="area"
-        value={state.area}
-        onChange={(value) => handleChange('area', value)}
-        options={Object.keys(maps)}
-      />
-      <DropDown
-        label="map"
-        value={state.map}
-        onChange={(value) => handleChange('map', value)}
-        options={Object.keys(maps[state.area]) || []}
-      />
-      <div>
-        <h3>Selected Values:</h3>
-        <p>Class: {state.class}</p>
-        <p>Area: {state.area}</p>
-        <p>Map: {state.map}</p>
-
-        <h3>Youtube Link:</h3>
-        <a href={urlFactory(state.class, state.area, state.map) || ""}>{state.class + " at " + state.map}</a>
-      </div>
-    </div>
-  )
+    <ThemeProvider theme={defaultTheme}>
+      <CssBaseline /> {/* Apply baseline styles, can be adjusted as needed */}
+      <HomePage />
+      {/* Add other components/pages here */}
+    </ThemeProvider>
+  );
 }
 
-export default App
+export default App;
