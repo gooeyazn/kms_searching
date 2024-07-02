@@ -5,10 +5,10 @@ import { createTheme } from '@mui/material/styles';
 const defaultTheme = createTheme({
   palette: {
     primary: {
-      main: '#ff9d00', // Adjust the primary color to fit MapleStory's theme
+      main: '#ffa71a', // Adjust the primary color to fit MapleStory's theme
     },
     secondary: {
-      main: '#00ff00', // Adjust the secondary color as well
+      main: '#ffce80', // Adjust the secondary color as well
     },
     // Add more customizations as needed
   },

@@ -24,7 +24,7 @@ const HomePage = () => {
   return (
     <Box sx={{ p: 3, paddingTop: 'calc(2rem + 32px)' }}>
       {/* Adjusted padding top to account for fixed banner */}
-      <Banner />
+      <Banner text={"MapleStory KMS Class Lookup"} />
       <Grid container spacing={3} sx={{ mt: 3 }}>
         {/* Add margin top for spacing below the banner */}
         <Grid item xs={12} sm={6} md={4}>
