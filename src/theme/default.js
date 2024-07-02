@@ -5,7 +5,7 @@ import { createTheme } from '@mui/material/styles';
 const defaultTheme = createTheme({
   palette: {
     primary: {
-      main: '#ff0000', // Adjust the primary color to fit MapleStory's theme
+      main: '#ff9d00', // Adjust the primary color to fit MapleStory's theme
     },
     secondary: {
       main: '#00ff00', // Adjust the secondary color as well
@@ -13,7 +13,18 @@ const defaultTheme = createTheme({
     // Add more customizations as needed
   },
   typography: {
-    fontFamily: '"Nexon Lv1 Gothic", sans-serif', // Example of using a custom font
+    fontFamily: [
+      '-apple-system',
+      'BlinkMacSystemFont',
+      '"Segoe UI"',
+      'Roboto',
+      '"Helvetica Neue"',
+      'Arial',
+      'sans-serif',
+      '"Apple Color Emoji"',
+      '"Segoe UI Emoji"',
+      '"Segoe UI Symbol"',
+    ].join(','),
   },
   // Add other theme configurations here
 });
