@@ -1,0 +1,10 @@
+{
+  "files": {
+    "main.js": "/kms_searching/static/js/main.cf2fbafe.js",
+    "index.html": "/kms_searching/index.html",
+    "main.cf2fbafe.js.map": "/kms_searching/static/js/main.cf2fbafe.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.cf2fbafe.js"
+  ]
+}
