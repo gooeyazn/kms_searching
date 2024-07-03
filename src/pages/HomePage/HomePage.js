@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Box, Grid } from '@mui/material';
+import { Box, Grid, Checkbox, FormControlLabel } from '@mui/material';
 import ClassDropDown from './ClassDropDown';
 import AreaDropDown from './AreaDropDown';
 import MapDropDown from './MapDropDown';
@@ -10,7 +10,8 @@ const HomePage = () => {
   const [selectedValues, setSelectedValues] = useState({
     class: '',
     area: '',
-    map: ''
+    map: '',
+    lazy: false  // Updated state property name
   });
 
   const handleValueChange = (key, value) => {
@@ -21,12 +22,17 @@ const HomePage = () => {
     }));
   };
 
+  const handleLazyChange = (event) => {
+    setSelectedValues((prevValues) => ({
+      ...prevValues,
+      lazy: event.target.checked,
+    }));
+  };
+
   return (
     <Box sx={{ p: 3, paddingTop: 'calc(2rem + 32px)' }}>
-      {/* Adjusted padding top to account for fixed banner */}
       <Banner text={"MapleStory KMS Class Lookup"} />
       <Grid container spacing={3} sx={{ mt: 3 }}>
-        {/* Add margin top for spacing below the banner */}
         <Grid item xs={12} sm={6} md={4}>
           <ClassDropDown
             selectedClass={selectedValues.class}
@@ -44,6 +50,18 @@ const HomePage = () => {
             selectedArea={selectedValues.area}
             selectedMap={selectedValues.map}
             onMapChange={(value) => handleValueChange('map', value)}
+          />
+        </Grid>
+        <Grid item xs={12}>
+          <FormControlLabel
+            control={
+              <Checkbox
+                checked={selectedValues.lazy}
+                onChange={handleLazyChange}
+                color="primary"
+              />
+            }
+            label="Lazy Rotation?"
           />
         </Grid>
         {selectedValues.class && selectedValues.area && selectedValues.map && (

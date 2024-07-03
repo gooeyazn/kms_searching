@@ -5,7 +5,7 @@ import { maps } from '../../constants/maps';
 import urlFactory from '../../helpers/urlFactory';
 
 const YouTubeLink = ({ selectedValues }) => {
-  const { class: selectedClass, area: selectedArea, map: selectedMap } = selectedValues;
+  const { class: selectedClass, area: selectedArea, map: selectedMap, lazy: lazy } = selectedValues;
 
   const classTranslation = classes[selectedClass];
   const mapTranslation = selectedMap ? maps[selectedArea][selectedMap] : '';
@@ -16,7 +16,7 @@ const YouTubeLink = ({ selectedValues }) => {
       {isURLReady && (
         <>
           <Typography variant="h6" sx={{ mt: 2 }}>YouTube Link:</Typography>
-          <Link href={urlFactory(classTranslation, selectedArea, mapTranslation)} target="_blank" rel="noopener">
+          <Link href={urlFactory(classTranslation, mapTranslation, lazy)} target="_blank" rel="noopener">
             {`${selectedClass} at ${selectedMap}`}
           </Link>
         </>
