@@ -64,7 +64,7 @@ const HomePage = () => {
             label="Lazy Rotation?"
           />
         </Grid>
-        {selectedValues.class && selectedValues.area && selectedValues.map && (
+        {selectedValues.class && (
           <Grid item xs={12}>
             <YouTubeLink selectedValues={selectedValues} />
           </Grid>

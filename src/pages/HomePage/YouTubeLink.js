@@ -7,17 +7,32 @@ import urlFactory from '../../helpers/urlFactory';
 const YouTubeLink = ({ selectedValues }) => {
   const { class: selectedClass, area: selectedArea, map: selectedMap, lazy: lazy } = selectedValues;
 
-  const classTranslation = classes[selectedClass];
+  const classTranslation = classes[selectedClass] || '';
   const mapTranslation = selectedMap ? maps[selectedArea][selectedMap] : '';
-  const isURLReady = selectedClass && selectedArea && selectedMap;
+  const areaTranslation = selectedArea ? maps[selectedArea].name : ''; // Assuming there's a name field for the area
+  const isClassSelected = Boolean(selectedClass);
+
+  const getLinkText = () => {
+    if (selectedMap) {
+      return `${selectedClass} at ${selectedMap}`;
+    }
+    if (selectedArea) {
+      return `${selectedClass} at ${selectedArea}`;
+    }
+    return `${selectedClass} Training`;
+  };
 
   return (
     <>
-      {isURLReady && (
+      {isClassSelected && (
         <>
           <Typography variant="h6" sx={{ mt: 2 }}>YouTube Link:</Typography>
-          <Link href={urlFactory(classTranslation, mapTranslation, lazy)} target="_blank" rel="noopener">
-            {`${selectedClass} at ${selectedMap}`}
+          <Link
+            href={urlFactory(classTranslation, selectedMap ? mapTranslation : (selectedArea ? areaTranslation : ''), lazy)}
+            target="_blank"
+            rel="noopener"
+          >
+            {getLinkText()}
           </Link>
         </>
       )}
