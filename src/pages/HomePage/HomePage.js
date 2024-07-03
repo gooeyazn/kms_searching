@@ -11,7 +11,7 @@ const HomePage = () => {
     class: '',
     area: '',
     map: '',
-    lazy: false  // Updated state property name
+    lazy: false  // Initial state for the checkbox
   });
 
   const handleValueChange = (key, value) => {

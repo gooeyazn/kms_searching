@@ -1,15 +1,19 @@
+// src/components/Banner.js
 import React from 'react';
-import { AppBar, Box, Typography } from '@mui/material';
+import { AppBar, Toolbar, Typography, useMediaQuery, useTheme } from '@mui/material';
 
-const Banner = ({text}) => {
+const Banner = ({ text }) => {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+
   return (
-    <Box sx={{flexGrow: 1}}>
-      <AppBar>
-        <Typography variant="h2" sx={{flexGrow:1, m:1}}>
-            {text}
+    <AppBar position="fixed">
+      <Toolbar>
+        <Typography variant={isMobile ? "h6" : "h4"} component="div">
+          {text}
         </Typography>
-      </AppBar>
-    </Box>
+      </Toolbar>
+    </AppBar>
   );
 };
 
